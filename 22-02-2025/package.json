@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "name": "express_application",
+  "version": "1.0.0",
+  "description": "my express application",
+  "main": "Index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rohit",
+  "license": "ISC"
+}
