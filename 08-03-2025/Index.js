@@ -28,5 +28,62 @@ app.get('/students', (req, res) => {
       res.status(500).json({ message: "Error retrieving students", error });
     });
 });
-app.post('/')
  
+app.post('/Addstudent', (req, res) => {
+  const { name, RollNo, section } = req.body;
+
+  const newStudent = new students({
+    name,
+    RollNo,
+    section
+  });
+
+  newStudent.save()
+    .then(() => {
+      res.status(201).json({ message: "Student added successfully", student: newStudent });
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "Error adding student", error });
+    });
+});
+ 
+
+app.put('/Updatestudent1/:RollNo', (req, res) => {
+  const { RollNo } = req.params;
+  const { name, section } = req.body;
+
+  students.findOneAndUpdate({ RollNo }, { name, section }, { new: true })
+    .then((updatedStudent) => {
+      if (!updatedStudent) {
+        return res.status(404).json({ message: "Student not found" });
+      }
+      res.status(200).json({ message: "Student updated successfully", student: updatedStudent });
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "Error updating student", error });
+    });
+});
+ 
+
+ 
+
+
+app.delete("/deleteStudent",(req,res)=>{
+  const {RollNo}=req.body;
+  students.findOneAndDelete({RollNo})
+  .then((deleteStudent)=>{
+    if(!deleteStudent){
+      return res.status(404).json({"message":"Student no found "})
+    }
+    res.status(200).json({"message":"deleted Sussfully"})
+  })
+  .catch((err)=>{
+    res.status(500).json({"message":"Error deleting student",err})
+    })
+})
+
+
+
+app.listen(2000, () => {
+  console.log("Server is running on port 2000");
+});
