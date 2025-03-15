@@ -4,9 +4,9 @@ app.listen(2000,()=>{
     console.log("Server Started...");
 })
 let student=[
-    {"id":"1","name":"rohit","branch":"IT"},
-    {"id":"2","name":"rohan","branch":"CSE"},
-    {"id":"3","name":"dhruva","branch":"ECE"}
+    {"id":"1","name":"karthik","branch":"IT"},
+    {"id":"2","name":"advaith","branch":"CSE"},
+    {"id":"3","name":"jashook","branch":"ECE"}
 ]
 //get methods
 app.get("/students",(req,res)=>{
@@ -39,7 +39,7 @@ app.delete("/deletestudent/:id",(req,res)=>{
         res.status(404).json({"message":"Student not found"})
     }
 })
-//adding the student
+//adding the students
 app.use(express.json())
 app.post("/addstudent",(req,res)=>{
     let students=req.body;
@@ -54,7 +54,7 @@ app.put("/updatestudent/:id",(req,res)=>{
         // student[studentindex].name=req.body.name
         student[studentindex].branch=req.body.branch
         res.status(200).json({"message":"updated successfully","students":student})
-    }
+}
     else{
         res.status(404).json({"message":"student not found"})
     }
