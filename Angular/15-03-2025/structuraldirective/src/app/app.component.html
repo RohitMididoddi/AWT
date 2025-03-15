@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Students</title>
+</head>
+<body>
+  <h1>List Of {{title}}</h1>
+  <h2>Total No Of Students</h2>
+  <table border="1">
+    <tr *ngFor =" let student of students">
+      <td>{{student.name}}</td>
+      <td>{{student.age}}</td>
+      <td>{{student.branch}}</td>
+    </tr>
+  </table>
+  <h3>Only Students of  IT</h3>
+  
+  <table border="1" *ngFor =" let student of students">
+      <tr *ngIf="student.branch=='IT'">
+        <td>{{student.name}}</td>
+        <td>{{student.age}}</td>
+        <td>{{student.branch}}</td>
+      </tr>
+  </table>
+
+  
+
+</body>
+</html>
+
+
+
+
+
